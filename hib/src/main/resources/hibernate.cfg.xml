@@ -29,13 +29,15 @@
    		<property name = "show_sql">true</property>
       
       <!-- List of XML mapping files -->
-      <mapping class="hib.model.UserDetails"/>
+      <!-- <mapping class="hib.model.UserDetails"/>
       <mapping class="hib.model.Vehicle"/>
       <mapping class="hib.model.Student"/>
       <mapping class="hib.model.Subject"/>
       <mapping class="hib.model.Dummy"/>
       <mapping class="hib.model.Topic"/>
-      <mapping class="hib.model.Teacher"/>
+      <mapping class="hib.model.Teacher"/> -->
+      <mapping class="hib.model.Animal"/>
+      <mapping class="hib.model.AnimalGeography"/>
       
       
    </session-factory>

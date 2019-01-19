@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import hib.model.Animal;
+import hib.model.AnimalGeography;
 import hib.model.Teacher;
 import hib.model.Topic;
 
@@ -56,13 +58,43 @@ public class TeacherTopicTest {
 		System.out.println("teacher3---"+teacher3.getTeacherName());
 		session2.close();*/
 		
-		Session session_t1 = sessionFactory.openSession();
+		/*Session session_t1 = sessionFactory.openSession();
 		Teacher teacher_t1 = (Teacher)session_t1.load(Teacher.class, 20);
 		System.out.println("teacher_t1---"+teacher_t1.getTeacherName());
-		session_t1.close();
+		session_t1.close();*/
+		
+		
+		Animal animal = new Animal();
+		animal.setType("birds");
+		//animal.setId(10);
+		
+		AnimalGeography ag=new AnimalGeography();
+		ag.setDesc("amazon");
+		//ag.setId(12);
+		
+		animal.setAnimalGeography(ag);
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		session.save(animal);
+		session.save(ag);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+		
+		
+		Session session2 = sessionFactory.openSession();
+		session2.beginTransaction();
+		
+		
+		Animal animal2 = session2.get(Animal.class, 1);
+		
+		session2.getTransaction().commit();
+		session2.close();
 		
 		sessionFactory.close();
-		
 
 	}
 
