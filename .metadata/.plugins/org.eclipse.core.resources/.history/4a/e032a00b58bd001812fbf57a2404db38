@@ -1,0 +1,38 @@
+package hib.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Topic {
+	@Id
+	private int topicId;
+	public int getTopicId() {
+		return topicId;
+	}
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
+	}
+	public String getTopicName() {
+		return topicName;
+	}
+	public void setTopicName(String topicName) {
+		this.topicName = topicName;
+	}
+	private String topicName;
+	
+	
+	
+	
+	
+	@ManyToOne(mappedBy="topicList")
+	private Teacher teacher;
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	
+}

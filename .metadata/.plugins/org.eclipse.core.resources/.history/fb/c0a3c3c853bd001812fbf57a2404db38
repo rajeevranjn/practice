@@ -1,0 +1,28 @@
+package hib.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Teacher {
+	@Id
+	private int teacherId;
+	
+	public int getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
+	}
+
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
+
+	private String teacherName;
+}

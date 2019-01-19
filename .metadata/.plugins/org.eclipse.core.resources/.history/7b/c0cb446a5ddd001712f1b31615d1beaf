@@ -1,0 +1,42 @@
+package hib.test;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import hib.model.Dummy;
+
+public class DummyTest {
+
+	public static void main(String[] args) {
+		SessionFactory sessionFactory=new Configuration()
+				.configure()
+				.buildSessionFactory();
+		
+		
+		/*Dummy dummy = new Dummy();
+		dummy.setDummyName("first dummy");*/
+		
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		//session.save(dummy);
+		
+		Dummy dummy=session.get(Dummy.class, 4);
+		
+		session.getTransaction().commit();
+		session.close();
+
+		
+		dummy.setDummyName("first dummy updated agn after session close");
+		
+		session=sessionFactory.openSession();
+		session.beginTransaction();
+		
+		session.save(dummy);
+		
+		session.getTransaction().commit();
+		session.close();
+		
+	}
+
+}

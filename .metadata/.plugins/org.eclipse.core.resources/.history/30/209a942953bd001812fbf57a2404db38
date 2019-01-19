@@ -1,0 +1,5 @@
+package hib.model;
+
+public class Teacher {
+
+}

@@ -1,0 +1,11 @@
+package hib.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Topic {
+
+	private int topicId;
+	private String topicName;
+	
+}

@@ -1,0 +1,48 @@
+package hib.test;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import hib.model.Teacher;
+import hib.model.Topic;
+
+public class TeacherTopicTest {
+
+	public static void main(String[] args) {
+		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
+		
+		Session session = sessionFactory.openSession();
+		Topic topic1 = new Topic();
+		topic1.setTopicId(10);
+		topic1.setTopicName("topic 1");
+		
+		
+		Topic topic2 = new Topic();
+		topic2.setTopicId(11);
+		topic2.setTopicName("topic 2");
+		
+		
+		Teacher teacher = new Teacher();
+		teacher.setTeacherId(20);
+		teacher.setTeacherName("teacher 1");
+		/*teacher.getTopicList().add(topic1);
+		teacher.getTopicList().add(topic2);*/
+		
+		topic1.setTeacher(teacher);
+		topic2.setTeacher(teacher);
+		
+		session.beginTransaction();
+		
+		session.save(teacher);
+		session.save(topic1);
+		session.save(topic2);
+		
+		session.getTransaction().commit();
+		
+		
+		session.close();
+
+	}
+
+}

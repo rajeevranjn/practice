@@ -1,0 +1,17 @@
+package hib.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class DummyModel {
+
+	
+	
+	private int dummyId;
+	
+	@Column(name="DUMMY_NAME")
+	private String dummyName;
+}
